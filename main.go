@@ -31,11 +31,9 @@ func htmxHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	// Routes
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/htmx", htmxHandler)
 
-	// Start server
 	port := ":8080"
 	log.Println("Server is running on http://localhost" + port)
 	err := http.ListenAndServe(port, nil)
