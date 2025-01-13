@@ -21,3 +21,7 @@ build:
 run:
 	@echo "Running the application"
 	@go run main.go
+
+run_hot_reload:
+	@echo "Running the application in development mode"
+	@go run main.go

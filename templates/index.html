@@ -7,7 +7,16 @@
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 </head>
 <body>
-    <h1>Go + HTMX Example</h1>
+    <h1>Github Action Pipelines</h1>
+    <!-- For each string in data make a p with data value-->
+    {{range .Repos}}
+        <p>{{.}}</p>
+        <!-- need to hit the endpoint /actions/repo_name to get a list of actions -->
+        <ul hx-get="/actions/{{ . }}" hx-target="#{{ . }}-actions" hx-swamp="innerHTML"  hx-trigger="load, every 30s">
+            <li id="{{ . }}-actions">Loading...</li>
+        </ul>
+
+    {{end}}
     <button 
         hx-get="/htmx" 
         hx-target="#response"
